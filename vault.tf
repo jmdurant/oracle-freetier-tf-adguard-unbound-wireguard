@@ -424,25 +424,6 @@ resource "oci_vault_secret" "github_token_wordpress" {
 }
 
 # -----------------------------------------------------------------------------
-# Outputs
+# Outputs (moved to outputs.tf for centralized output management)
 # -----------------------------------------------------------------------------
-
-output "vault_ocid" {
-  description = "OCID of the created vault"
-  value       = oci_kms_vault.aiotp_vault.id
-}
-
-output "vault_management_endpoint" {
-  description = "Vault management endpoint"
-  value       = oci_kms_vault.aiotp_vault.management_endpoint
-}
-
-output "dynamic_group_name" {
-  description = "Name of the dynamic group for instance principal"
-  value       = oci_identity_dynamic_group.aiotp_compute_group.name
-}
-
-output "vault_secrets_endpoint" {
-  description = "Endpoint for retrieving secrets (use in start-deployment-simple.sh)"
-  value       = "oci secrets secret-bundle get-secret-bundle-by-name --vault-id ${oci_kms_vault.aiotp_vault.id} --secret-name <SECRET_NAME> --auth instance_principal"
-}
+# See outputs.tf for all terraform outputs

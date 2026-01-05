@@ -70,8 +70,9 @@ function Format-TerraformString {
     if ([string]::IsNullOrEmpty($Value)) {
         return '""'
     }
-    # Escape backslashes and quotes for Terraform
-    $escaped = $Value -replace '\\', '\\\\' -replace '"', '\"'
+    # Escape backslashes for Terraform HCL format (one backslash becomes two)
+    # Use [regex]::Escape alternative to avoid PowerShell double-processing
+    $escaped = $Value.Replace('\', '\\').Replace('"', '\"')
     return "`"$escaped`""
 }
 
@@ -189,6 +190,16 @@ $tfvarsContent = @"
 # - Delete after running terraform apply
 # =============================================================================
 
+# OCI Authentication (from environment-config.ps1)
+tenancy_ocid               = $(Format-TerraformString $envConfig.OCI.tenancyOcid)
+user_ocid                  = $(Format-TerraformString $envConfig.OCI.userOcid)
+oracle_api_key_fingerprint = $(Format-TerraformString $envConfig.OCI.apiKeyFingerprint)
+oracle_api_private_key_path = $(Format-TerraformString $envConfig.OCI.apiPrivateKeyPath)
+region                     = $(Format-TerraformString $envConfig.OCI.region)
+availability_domain_number = $(Format-TerraformString $envConfig.OCI.availabilityDomain)
+ssh_public_key             = $(Format-TerraformString $envConfig.OCI.sshPublicKey)
+ssh_private_key_path       = $(Format-TerraformString $envConfig.OCI.sshPrivateKeyPath)
+
 # Database secrets
 secret_database_openemr_password    = $(Format-TerraformString $secrets["secret_database_openemr_password"])
 secret_database_telehealth_password = $(Format-TerraformString $secrets["secret_database_telehealth_password"])
@@ -234,7 +245,8 @@ secret_github_token_main      = $(Format-TerraformString $secrets["secret_github
 secret_github_token_wordpress = $(Format-TerraformString $secrets["secret_github_token_wordpress"])
 "@
 
-Set-Content -Path $OutputFile -Value $tfvarsContent -Encoding UTF8
+# Write without BOM (UTF8 in PowerShell 5.x adds BOM, so use .NET method)
+[System.IO.File]::WriteAllText($OutputFile, $tfvarsContent, [System.Text.UTF8Encoding]::new($false))
 
 # Count found vs missing secrets
 $found = ($secrets.Values | Where-Object { -not [string]::IsNullOrEmpty($_) }).Count
