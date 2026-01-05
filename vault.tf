@@ -70,7 +70,7 @@ resource "oci_vault_secret" "database_openemr_password" {
   compartment_id = var.tenancy_ocid
   vault_id       = oci_kms_vault.aiotp_vault.id
   key_id         = oci_kms_key.aiotp_master_key.id
-  secret_name    = "database/openemr-password"
+  secret_name   = "database-openemr-password"
   description    = "OpenEMR MySQL root password"
 
   secret_content {
@@ -83,7 +83,7 @@ resource "oci_vault_secret" "database_telehealth_password" {
   compartment_id = var.tenancy_ocid
   vault_id       = oci_kms_vault.aiotp_vault.id
   key_id         = oci_kms_key.aiotp_master_key.id
-  secret_name    = "database/telehealth-password"
+  secret_name   = "database-telehealth-password"
   description    = "Telehealth database password"
 
   secret_content {
@@ -100,7 +100,7 @@ resource "oci_vault_secret" "openemr_notification_token" {
   compartment_id = var.tenancy_ocid
   vault_id       = oci_kms_vault.aiotp_vault.id
   key_id         = oci_kms_key.aiotp_master_key.id
-  secret_name    = "openemr/notification-token"
+  secret_name   = "openemr-notification-token"
   description    = "OpenEMR notification token"
 
   secret_content {
@@ -117,7 +117,7 @@ resource "oci_vault_secret" "telehealth_app_key" {
   compartment_id = var.tenancy_ocid
   vault_id       = oci_kms_vault.aiotp_vault.id
   key_id         = oci_kms_key.aiotp_master_key.id
-  secret_name    = "telehealth/app-key"
+  secret_name   = "telehealth-app-key"
   description    = "Laravel APP_KEY for telehealth"
 
   secret_content {
@@ -130,7 +130,7 @@ resource "oci_vault_secret" "telehealth_notification_token" {
   compartment_id = var.tenancy_ocid
   vault_id       = oci_kms_vault.aiotp_vault.id
   key_id         = oci_kms_key.aiotp_master_key.id
-  secret_name    = "telehealth/notification-token"
+  secret_name   = "telehealth-notification-token"
   description    = "Telehealth notification token"
 
   secret_content {
@@ -143,7 +143,7 @@ resource "oci_vault_secret" "telehealth_webhook_secret" {
   compartment_id = var.tenancy_ocid
   vault_id       = oci_kms_vault.aiotp_vault.id
   key_id         = oci_kms_key.aiotp_master_key.id
-  secret_name    = "telehealth/webhook-secret"
+  secret_name   = "telehealth-webhook-secret"
   description    = "Telehealth HMAC webhook secret"
 
   secret_content {
@@ -156,7 +156,7 @@ resource "oci_vault_secret" "telehealth_transcription_token" {
   compartment_id = var.tenancy_ocid
   vault_id       = oci_kms_vault.aiotp_vault.id
   key_id         = oci_kms_key.aiotp_master_key.id
-  secret_name    = "telehealth/transcription-token"
+  secret_name   = "telehealth-transcription-token"
   description    = "Telehealth transcription notification token"
 
   secret_content {
@@ -169,7 +169,7 @@ resource "oci_vault_secret" "telehealth_redis_password" {
   compartment_id = var.tenancy_ocid
   vault_id       = oci_kms_vault.aiotp_vault.id
   key_id         = oci_kms_key.aiotp_master_key.id
-  secret_name    = "telehealth/redis-password"
+  secret_name   = "telehealth-redis-password"
   description    = "Telehealth Redis password"
 
   secret_content {
@@ -186,7 +186,7 @@ resource "oci_vault_secret" "mail_smtp_password" {
   compartment_id = var.tenancy_ocid
   vault_id       = oci_kms_vault.aiotp_vault.id
   key_id         = oci_kms_key.aiotp_master_key.id
-  secret_name    = "mail/smtp-password"
+  secret_name   = "mail-smtp-password"
   description    = "SMTP mail password"
 
   secret_content {
@@ -203,7 +203,7 @@ resource "oci_vault_secret" "pusher_app_id" {
   compartment_id = var.tenancy_ocid
   vault_id       = oci_kms_vault.aiotp_vault.id
   key_id         = oci_kms_key.aiotp_master_key.id
-  secret_name    = "pusher/app-id"
+  secret_name   = "pusher-app-id"
   description    = "Pusher application ID"
 
   secret_content {
@@ -216,7 +216,7 @@ resource "oci_vault_secret" "pusher_app_key" {
   compartment_id = var.tenancy_ocid
   vault_id       = oci_kms_vault.aiotp_vault.id
   key_id         = oci_kms_key.aiotp_master_key.id
-  secret_name    = "pusher/app-key"
+  secret_name   = "pusher-app-key"
   description    = "Pusher application key"
 
   secret_content {
@@ -229,7 +229,7 @@ resource "oci_vault_secret" "pusher_app_secret" {
   compartment_id = var.tenancy_ocid
   vault_id       = oci_kms_vault.aiotp_vault.id
   key_id         = oci_kms_key.aiotp_master_key.id
-  secret_name    = "pusher/app-secret"
+  secret_name   = "pusher-app-secret"
   description    = "Pusher application secret"
 
   secret_content {
@@ -246,7 +246,7 @@ resource "oci_vault_secret" "firebase_webhook_secret" {
   compartment_id = var.tenancy_ocid
   vault_id       = oci_kms_vault.aiotp_vault.id
   key_id         = oci_kms_key.aiotp_master_key.id
-  secret_name    = "firebase/webhook-secret"
+  secret_name   = "firebase-webhook-secret"
   description    = "Firebase webhook secret"
 
   secret_content {
@@ -263,7 +263,7 @@ resource "oci_vault_secret" "jitsi_jwt_app_secret" {
   compartment_id = var.tenancy_ocid
   vault_id       = oci_kms_vault.aiotp_vault.id
   key_id         = oci_kms_key.aiotp_master_key.id
-  secret_name    = "jitsi/jwt-app-secret"
+  secret_name   = "jitsi-jwt-app-secret"
   description    = "Jitsi JWT application secret"
 
   secret_content {
@@ -276,7 +276,7 @@ resource "oci_vault_secret" "jitsi_sip_password" {
   compartment_id = var.tenancy_ocid
   vault_id       = oci_kms_vault.aiotp_vault.id
   key_id         = oci_kms_key.aiotp_master_key.id
-  secret_name    = "jitsi/sip-password"
+  secret_name   = "jitsi-sip-password"
   description    = "Jigasi SIP password"
 
   secret_content {
@@ -289,7 +289,7 @@ resource "oci_vault_secret" "jitsi_jicofo_password" {
   compartment_id = var.tenancy_ocid
   vault_id       = oci_kms_vault.aiotp_vault.id
   key_id         = oci_kms_key.aiotp_master_key.id
-  secret_name    = "jitsi/jicofo-password"
+  secret_name   = "jitsi-jicofo-password"
   description    = "Jicofo auth password"
 
   secret_content {
@@ -302,7 +302,7 @@ resource "oci_vault_secret" "jitsi_jvb_password" {
   compartment_id = var.tenancy_ocid
   vault_id       = oci_kms_vault.aiotp_vault.id
   key_id         = oci_kms_key.aiotp_master_key.id
-  secret_name    = "jitsi/jvb-password"
+  secret_name   = "jitsi-jvb-password"
   description    = "JVB auth password"
 
   secret_content {
@@ -315,7 +315,7 @@ resource "oci_vault_secret" "jitsi_jigasi_xmpp_password" {
   compartment_id = var.tenancy_ocid
   vault_id       = oci_kms_vault.aiotp_vault.id
   key_id         = oci_kms_key.aiotp_master_key.id
-  secret_name    = "jitsi/jigasi-xmpp-password"
+  secret_name   = "jitsi-jigasi-xmpp-password"
   description    = "Jigasi XMPP password"
 
   secret_content {
@@ -328,7 +328,7 @@ resource "oci_vault_secret" "jitsi_jigasi_transcriber_password" {
   compartment_id = var.tenancy_ocid
   vault_id       = oci_kms_vault.aiotp_vault.id
   key_id         = oci_kms_key.aiotp_master_key.id
-  secret_name    = "jitsi/jigasi-transcriber-password"
+  secret_name   = "jitsi-jigasi-transcriber-password"
   description    = "Jigasi transcriber password"
 
   secret_content {
@@ -341,7 +341,7 @@ resource "oci_vault_secret" "jitsi_jibri_recorder_password" {
   compartment_id = var.tenancy_ocid
   vault_id       = oci_kms_vault.aiotp_vault.id
   key_id         = oci_kms_key.aiotp_master_key.id
-  secret_name    = "jitsi/jibri-recorder-password"
+  secret_name   = "jitsi-jibri-recorder-password"
   description    = "Jibri recorder password"
 
   secret_content {
@@ -354,7 +354,7 @@ resource "oci_vault_secret" "jitsi_jibri_xmpp_password" {
   compartment_id = var.tenancy_ocid
   vault_id       = oci_kms_vault.aiotp_vault.id
   key_id         = oci_kms_key.aiotp_master_key.id
-  secret_name    = "jitsi/jibri-xmpp-password"
+  secret_name   = "jitsi-jibri-xmpp-password"
   description    = "Jibri XMPP password"
 
   secret_content {
@@ -367,7 +367,7 @@ resource "oci_vault_secret" "jitsi_turn_password" {
   compartment_id = var.tenancy_ocid
   vault_id       = oci_kms_vault.aiotp_vault.id
   key_id         = oci_kms_key.aiotp_master_key.id
-  secret_name    = "jitsi/turn-password"
+  secret_name   = "jitsi-turn-password"
   description    = "TURN server password"
 
   secret_content {
@@ -384,7 +384,7 @@ resource "oci_vault_secret" "transcription_webhook_token" {
   compartment_id = var.tenancy_ocid
   vault_id       = oci_kms_vault.aiotp_vault.id
   key_id         = oci_kms_key.aiotp_master_key.id
-  secret_name    = "transcription/webhook-token"
+  secret_name   = "transcription-webhook-token"
   description    = "Transcription pipeline webhook token"
 
   secret_content {
@@ -401,7 +401,7 @@ resource "oci_vault_secret" "github_token_main" {
   compartment_id = var.tenancy_ocid
   vault_id       = oci_kms_vault.aiotp_vault.id
   key_id         = oci_kms_key.aiotp_master_key.id
-  secret_name    = "github/token-main"
+  secret_name   = "github-token-main"
   description    = "GitHub personal access token (main)"
 
   secret_content {
@@ -414,7 +414,7 @@ resource "oci_vault_secret" "github_token_wordpress" {
   compartment_id = var.tenancy_ocid
   vault_id       = oci_kms_vault.aiotp_vault.id
   key_id         = oci_kms_key.aiotp_master_key.id
-  secret_name    = "github/token-wordpress"
+  secret_name   = "github-token-wordpress"
   description    = "GitHub personal access token (wordpress)"
 
   secret_content {
